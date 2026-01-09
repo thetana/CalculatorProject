@@ -12,7 +12,10 @@ class CalculationHistory {
     private char operator;
     private int result;
     private boolean isOk;
-    private LocalDateTime dateTime;
+    private String comment;
+    private LocalDateTime createdDt;
+    private LocalDateTime updatedDt;
+
 
 
     // 안헷갈리게 this도 명시하고 파라메타도 다른 이름으로 한다
@@ -22,7 +25,7 @@ class CalculationHistory {
         this.operator = o;
         this.result = r;
         this.isOk = ok;
-        this.dateTime = dt;
+        this.createdDt = dt;
     }
 
     // 어차피 현재시간 넣을거면 그냥 생성자에서 만들게 DateTime 안넣는 버전 생성자
@@ -32,7 +35,29 @@ class CalculationHistory {
         this.operator = o;
         this.result = r;
         this.isOk = ok;
-        this.dateTime = LocalDateTime.now();
+        this.createdDt = LocalDateTime.now();
+    }
+
+    // 조회 상황에서 복사본을 만들어서 사용하게 하기 위한 생성자
+    CalculationHistory(CalculationHistory other) {
+        this.num1 = other.num1;
+        this.num2 = other.num2;
+        this.operator = other.operator;
+        this.result = other.result;
+        this.isOk = other.isOk;
+        this.createdDt = other.createdDt;
+    }
+
+    void setComment(String c){
+        this.comment = c;
+    }
+
+    void setAll(int n1, int n2, char o, int r, boolean ok){
+        this.num1 = n1;
+        this.num2 = n2;
+        this.operator = o;
+        this.result = r;
+        this.isOk = ok;
     }
 
     // 그냥 익숙하니까 toString 이라고 이름 지었는데 오버라이드 되어서 print에 오브젝트 넣으면 알아서 실행됨
@@ -40,9 +65,9 @@ class CalculationHistory {
     @Override
     public String toString() {
         if (isOk) {
-            return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = " + result + " | 계산 일시 : " + dateTime;
+            return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = " + result + " | 노트 : " + comment + " | 계산 일시 : " + createdDt;
         } else {
-            return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = 계산 실패 | 계산 일시 : " + dateTime;
+            return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = 계산 실패 | 노트 : " + comment + " | 계산 일시 : " + createdDt;
         }
     }
 }
