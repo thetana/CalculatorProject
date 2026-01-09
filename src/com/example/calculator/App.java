@@ -7,7 +7,6 @@ public class App {
         Scanner sc = new Scanner(System.in);
         Calculator calculator = new Calculator();
 
-
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
             int n1 = sc.nextInt();
@@ -17,13 +16,20 @@ public class App {
             System.out.print("사칙연산 기호를 입력하세요: ");
             char o = sc.next().charAt(0);
 
-            int result = calculator.calculate(n1, n2, o);
-            System.out.println("결과: " + result);
-            System.out.println("더 계산 하시려면 아무거나 입력 하세요. (exit 입력 시 종료)");
+            boolean isOk = calculator.calculate(n1, n2, o);
+            if (isOk) {
+                System.out.println("계산에 성공 했습니다!");
+            } else {
+                System.out.println("계산에 실패 했습니다!");
+            }
+            System.out.println(calculator.getLastCalculationHistory());
 
+            System.out.println("더 계산 하시려면 아무거나 입력 하세요. (exit 입력 시 종료)");
             if (sc.next().equals("exit")) {
                 System.exit(0);
             }
         }
+
+
     }
 }
