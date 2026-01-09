@@ -31,7 +31,7 @@ public class App {
                     } else {
                         System.out.println("계산에 실패 했습니다!");
                     }
-                    System.out.println(calculator.getLastCalculationHistory());
+                    System.out.println(calculator.getLastCalculationHistoryToString());
 
                     System.out.println("더 계산 하시려면 아무거나 입력 하세요. (0 또는 exit 입력 시 메인메뉴로 이동)");
                     String s = sc.next();

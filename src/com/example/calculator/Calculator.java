@@ -1,11 +1,10 @@
 package com.example.calculator;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+// 원래 계산과 계산된 데이터의 저장까지 담당하고 있었으나 저장은 CalculatorArchives가 담당하도록 변경됨
+// 우선 계산과 CalculatorArchives에 요청 보내는 것 그리고 요청 결과 출력까지 담당 할 생각이다
 
 public class Calculator {
-    private List<CalculationHistory> calculationHistorys = new ArrayList<CalculationHistory>();
+    CalculationArchive archives = new CalculationArchive();
 
     public boolean calculate(int n1, int n2, char o) {
         boolean isOk = false;
@@ -39,66 +38,29 @@ public class Calculator {
         } catch (Exception e) {
             System.out.println("예상치 못한 에러 입니다.");
         }
-        addCalculationHistory(n1, n2, o, result, isOk);
+        archives.addCalculationHistory(n1, n2, o, result, isOk);
         return isOk;
     }
 
-    private void addCalculationHistory(int n1, int n2, char o, int result, boolean isOk) {
-        calculationHistorys.add(new CalculationHistory(n1, n2, o, result, isOk));
-    }
-
-    public CalculationHistory getCalculationHistory(int index) {
-        return calculationHistorys.get(index);
-    }
-
-    public CalculationHistory getLastCalculationHistory() {
-        return getCalculationHistory(calculationHistorys.size() - 1);
-    }
-
     public String getLastCalculationHistoryToString() {
-        return getLastCalculationHistory().toString();
+        return archives.getLastCalculationHistory().toString();
     }
 
 
-    // Calculator 클래스 안에서만 쓰고 싶어서 인어 클래스로 만들었다
-    // 사실 처음엔 그냥 public하게 만들었는데 무분별하게 데이터를 수정하지 못하게 (정해진 기능 안에서만 수정 될 수 있게) 하고 싶어서 막았다
-    private class CalculationHistory {
-        private int num1;
-        private int num2;
-        private char operator;
-        private int result;
-        private boolean isOk;
-        private LocalDateTime dateTime;
+//    public String getCalculationHistorys() {
+//        calculationHistorys.
+//
+//
+//        return getLastCalculationHistory().toString();
+//    }
+//
+//    public String getCalculationHistorys() {
+//        return getLastCalculationHistory().toString();
+//    }
 
 
-        // 안헷갈리게 this도 명시하고 파라메타도 다른 이름으로 한다
-        CalculationHistory(int n1, int n2, char o, int r, boolean ok, LocalDateTime dt) {
-            this.num1 = n1;
-            this.num2 = n2;
-            this.operator = o;
-            this.result = r;
-            this.isOk = ok;
-            this.dateTime = dt;
-        }
 
-        // 어차피 현재시간 넣을거면 그냥 생성자에서 만들게 DateTime 안넣는 버전 생성자
-        CalculationHistory(int n1, int n2, char o, int r, boolean ok) {
-            this.num1 = n1;
-            this.num2 = n2;
-            this.operator = o;
-            this.result = r;
-            this.isOk = ok;
-            this.dateTime = LocalDateTime.now();
-        }
 
-        public String toString() {
-            if (isOk) {
-                return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = " + result + " | 계산 일시 : " + dateTime;
-            } else {
-                return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = 계산 실패 | 계산 일시 : " + dateTime;
-            }
-        }
-    }
 }
 
 
