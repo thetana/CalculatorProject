@@ -13,11 +13,14 @@ public class Calculator {
         boolean isOk = false;
         int result = 0;
         try {
-            OperatorType op = OperatorType.from(o);
-            result = op.apply(n1, n2);
+            switch (o) {
+                case '+' -> result = OperatorType.PLUS.compute(n1, n2);
+                case '-' -> result = OperatorType.MINUS.compute(n1, n2);
+                case '*' -> result = OperatorType.MULTIPLY.compute(n1, n2);
+                case '/' -> result = OperatorType.DIVIDE.compute(n1, n2);
+                default -> throw new IllegalArgumentException();
+            }
             isOk = true;
-
-
         } catch (IllegalArgumentException e) {// 지원하지 않는 연산자 썼을 때
             isOk = false;
             System.out.println("연산 할 수 없는 기호 입니다.");
