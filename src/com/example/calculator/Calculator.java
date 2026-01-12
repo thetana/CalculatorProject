@@ -9,31 +9,18 @@ public class Calculator {
     private CalculationArchive archives = new CalculationArchive();
 
     public boolean calculate(int n1, int n2, char o) {
+        ArithmeticCalculator test = new ArithmeticCalculator<>();
         boolean isOk = false;
         int result = 0;
         try {
-            // 향 후에 x, X, %, ×, ÷ 등의 문자도 수용 할 수 있게 고려. 아마 if로 해주는게 나을 수 있음
-            switch (o) {
-                case '+':
-                    result = n1 + n2;
-                    isOk = true;
-                    break;
-                case '-':
-                    result = n1 - n2;
-                    isOk = true;
-                    break;
-                case '*':
-                    result = n1 * n2;
-                    isOk = true;
-                    break;
-                case '/':
-                    result = n1 / n2;
-                    isOk = true;
-                    break;
-                default:
-                    System.out.println("연산 할 수 없는 기호 입니다.");
-                    isOk = false;
-            }
+            OperatorType op = OperatorType.from(o);
+            result = op.apply(n1, n2);
+            isOk = true;
+
+
+        } catch (IllegalArgumentException e) {// 지원하지 않는 연산자 썼을 때
+            isOk = false;
+            System.out.println("연산 할 수 없는 기호 입니다.");
         } catch (ArithmeticException e) {// 우선 0나누기만 추가 향후 몇가지 예외처리 추가
             isOk = false;
             System.out.println("0으로 나눌 수 없습니다.");
@@ -51,7 +38,7 @@ public class Calculator {
     public void printLastCalculationHistorys() {
         // 조회를 위해 수정불가가 걸린 리스트를 받아온다
         List<CalculationHistory> list = archives.getAllCalculationHistorys();
-        for (int i = list.size()-1; i >=0; i--){
+        for (int i = list.size() - 1; i >= 0; i--) {
             System.out.println("인덱스 : " + i + " | " + list.get(i));
         }
     }
@@ -74,8 +61,6 @@ public class Calculator {
 //    public String getCalculationHistorys() {
 //        return getLastCalculationHistory().toString();
 //    }
-
-
 
 
 }

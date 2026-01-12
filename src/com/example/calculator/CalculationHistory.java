@@ -12,11 +12,9 @@ class CalculationHistory {
     private char operator;
     private int result;
     private boolean isOk;
-    private String comment;
-    private LocalDateTime createdDt;
-    private LocalDateTime updatedDt;
-
-
+    private String comment = "";
+    private LocalDateTime createdDt  = LocalDateTime.now();
+    private LocalDateTime updatedDt; // 지금 안쓰지만 언젠가 쓸 수도 있으니 저장 해둔다 (영구저장이 아니라 미리 해도 의미는 없는데 영구저장을 염두해두고 일단 저장 한다)
 
     // 안헷갈리게 this도 명시하고 파라메타도 다른 이름으로 한다
     CalculationHistory(int n1, int n2, char o, int r, boolean ok, LocalDateTime dt) {
@@ -35,7 +33,6 @@ class CalculationHistory {
         this.operator = o;
         this.result = r;
         this.isOk = ok;
-        this.createdDt = LocalDateTime.now();
     }
 
     // 조회 상황에서 복사본을 만들어서 사용하게 하기 위한 생성자
@@ -50,6 +47,7 @@ class CalculationHistory {
 
     void setComment(String c){
         this.comment = c;
+        this.updatedDt = LocalDateTime.now();
     }
 
     void setAll(int n1, int n2, char o, int r, boolean ok){

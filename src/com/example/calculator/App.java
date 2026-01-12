@@ -26,8 +26,8 @@ public class App {
                         int n1 = Integer.parseInt(s);
                         char o = sc.next().charAt(0);
                         int n2 = sc.nextInt();
-                        boolean isOk = calculator.calculate(n1, n2, o);
-                        if (isOk) {
+
+                        if (calculator.calculate(n1, n2, o)) {
                             System.out.println("계산에 성공 했습니다!");
                         } else {
                             System.out.println("계산에 실패 했습니다!");
