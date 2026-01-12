@@ -41,9 +41,11 @@ public class App {
                     System.out.println("1. 이력 코멘트 달기, 2. 데이터 삭제, 0. 메인 메뉴로 이동");
                     String s = sc.next();
                     if (s.equals("1")) {
+                        calculator.printLastCalculationHistorys();
                         System.out.println("공백으로 구분하여 인덱스 코멘트 순으로 입력해 주세요. (exit 입력 시 뒤로가기)");
                         System.out.println("예) 0 코멘트");
-                        s = sc.next();
+                        s = sc.next(); // 뒤로가기를 할 수도 있으니
+
                         if (s.equals("exit") || s.equals("q")) {
                             break;
                         } else {
@@ -52,12 +54,21 @@ public class App {
                             calculator.putCalculationHistoryComment(index, comment);
                         }
                     } else if (in.equals("2")) {
+                        calculator.printLastCalculationHistorys();
+                        System.out.println("삭제 할 인덱스 입력. (exit 입력 시 뒤로가기)");
+                        System.out.println("인덱스는 리스트에 인덱스 이며 유일한 키 값이 아님으로 삭제 후 해당 인덱스가 다시 존재 가능 (값은 정확히 지워짐)");
+                        s = sc.next(); // 뒤로가기를 할 수도 있으니
+                        if (s.equals("exit") || s.equals("q")) {
+                            break;
+                        } else {
+                            int index = Integer.parseInt(s);
+                            calculator.deletCalculationHistory(index);
+                        }
                     } else if (in.equals("0") || in.equals("exit")) {
                         break;
                     } else {
                         System.out.println("입력하신 메뉴를 찾지 못했습니다. 다시 입력해 주세요.");
                     }
-                    int n = sc.nextInt();
                 }
             } else if (in.equals("0") || in.equals("exit")) {
                 System.exit(0);

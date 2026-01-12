@@ -60,6 +60,10 @@ public class Calculator {
         archives.setCalculationHistoryComment(index, comment);
     }
 
+    public void deletCalculationHistory(int index) {
+        archives.removeCalculationHistory(index);
+    }
+
 //    public String getCalculationHistorys() {
 //        calculationHistorys.
 //

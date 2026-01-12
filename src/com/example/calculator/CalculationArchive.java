@@ -30,4 +30,7 @@ public class CalculationArchive {
     public void setCalculationHistoryComment(int index, String comment) {
         calculationHistorys.get(index).setComment(comment);
     }
+    public void removeCalculationHistory(int index) {
+        calculationHistorys.remove(index);
+    }
 }
