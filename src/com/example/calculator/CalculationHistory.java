@@ -7,17 +7,17 @@ import java.time.LocalDateTime;
 // (메인에서는 CalculatorArchives에 직접 적근하지 않기 때문에 굳이 이너 클래스로 관리 하지 않아도 개발자의 실수로부터 데이터를 보호 할 수 있다)
 
 class CalculationHistory {
-    private int num1;
-    private int num2;
+    private String num1;
+    private String num2;
     private char operator;
-    private int result;
+    private String result;
     private boolean isOk;
     private String comment = "";
     private LocalDateTime createdDt  = LocalDateTime.now();
     private LocalDateTime updatedDt; // 지금 안쓰지만 언젠가 쓸 수도 있으니 저장 해둔다 (영구저장이 아니라 미리 해도 의미는 없는데 영구저장을 염두해두고 일단 저장 한다)
 
     // 안헷갈리게 this도 명시하고 파라메타도 다른 이름으로 한다
-    CalculationHistory(int n1, int n2, char o, int r, boolean ok, LocalDateTime dt) {
+    CalculationHistory(String n1, String n2, char o, String r, boolean ok, LocalDateTime dt) {
         this.num1 = n1;
         this.num2 = n2;
         this.operator = o;
@@ -27,7 +27,7 @@ class CalculationHistory {
     }
 
     // 어차피 현재시간 넣을거면 그냥 생성자에서 만들게 DateTime 안넣는 버전 생성자
-    CalculationHistory(int n1, int n2, char o, int r, boolean ok) {
+    CalculationHistory(String n1, String n2, char o, String r, boolean ok) {
         this.num1 = n1;
         this.num2 = n2;
         this.operator = o;
@@ -50,7 +50,7 @@ class CalculationHistory {
         this.updatedDt = LocalDateTime.now();
     }
 
-    void setAll(int n1, int n2, char o, int r, boolean ok){
+    void setAll(String n1, String n2, char o, String r, boolean ok){
         this.num1 = n1;
         this.num2 = n2;
         this.operator = o;

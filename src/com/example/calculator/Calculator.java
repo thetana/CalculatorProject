@@ -1,5 +1,9 @@
 package com.example.calculator;
 
+import java.util.InputMismatchException;
+import java.util.function.DoubleBinaryOperator;
+
+
 // 원래 계산과 계산된 데이터의 저장까지 담당하고 있었으나 저장은 CalculatorArchives가 담당하도록 변경됨
 // 우선 계산과 CalculatorArchives에 요청 보내는 것 그리고 요청 결과 출력까지 담당 할 생각이다
 
@@ -8,18 +12,20 @@ import java.util.List;
 public class Calculator {
     private CalculationArchive archives = new CalculationArchive();
 
-    public boolean calculate(int n1, int n2, char o) {
-        ArithmeticCalculator test = new ArithmeticCalculator<>();
+    public boolean calculate(String n1, String n2, char o) {
         boolean isOk = false;
         int result = 0;
+        double result2 = 0;
         try {
-            switch (o) {
-                case '+' -> result = OperatorType.PLUS.compute(n1, n2);
-                case '-' -> result = OperatorType.MINUS.compute(n1, n2);
-                case '*' -> result = OperatorType.MULTIPLY.compute(n1, n2);
-                case '/' -> result = OperatorType.DIVIDE.compute(n1, n2);
-                default -> throw new IllegalArgumentException();
-            }
+            OperatorType operatorType = OperatorType.from(o);
+//            switch (operatorType) {
+//                case PLUS -> result2 = test.plus(n1, n2);
+//                case MINUS -> result2 = test.minus(n1, n2);
+//                case MULTIPLY -> result2 = test.multiply(n1, n2);
+//                case DIVIDE -> result2 = test.divide(n1, n2);
+//                default -> throw new IllegalArgumentException();
+//            }
+            System.out.println(result2);
             isOk = true;
         } catch (IllegalArgumentException e) {// 지원하지 않는 연산자 썼을 때
             isOk = false;
@@ -30,7 +36,9 @@ public class Calculator {
         } catch (Exception e) {
             System.out.println("예상치 못한 에러 입니다.");
         }
-        archives.addCalculationHistory(n1, n2, o, result, isOk);
+
+
+//        archives.addCalculationHistory(Integer.parseInt(n1), Integer.parseInt(n2), o, result, isOk);
         return isOk;
     }
 

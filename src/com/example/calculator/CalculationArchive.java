@@ -11,7 +11,8 @@ import java.util.List;
 public class CalculationArchive {
     private List<CalculationHistory> calculationHistorys = new ArrayList<>();
 
-    public void addCalculationHistory(int n1, int n2, char o, int result, boolean isOk) {
+    // n1, n2 형을 어떤걸로 하는게 좋을까? String, double? 다른 참조형?
+    public void addCalculationHistory(String n1, String n2, char o, String result, boolean isOk) {
         calculationHistorys.add(new CalculationHistory(n1, n2, o, result, isOk));
     }
 
