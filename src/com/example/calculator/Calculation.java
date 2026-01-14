@@ -1,23 +1,20 @@
 package com.example.calculator;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-// Calculator 클래스 안에서만 쓰고 싶어서 이너 클래스로 잠깐 들어갔다 다시 개별 클래스로 만듬
-// 이유는 CalculatorArchives 도입으로 편의상 이너 클래스 보다는 개별 클래스로 동작 하는게 낫다고봄
-// (메인에서는 CalculatorArchives에 직접 적근하지 않기 때문에 굳이 이너 클래스로 관리 하지 않아도 개발자의 실수로부터 데이터를 보호 할 수 있다)
-
-class CalculationHistory {
-    private String num1;
-    private String num2;
+public class Calculation {
+    private BigDecimal num1;
+    private BigDecimal num2;
     private char operator;
-    private String result;
+    private BigDecimal result;
     private boolean isOk;
     private String comment = "";
     private LocalDateTime createdDt  = LocalDateTime.now();
     private LocalDateTime updatedDt; // 지금 안쓰지만 언젠가 쓸 수도 있으니 저장 해둔다 (영구저장이 아니라 미리 해도 의미는 없는데 영구저장을 염두해두고 일단 저장 한다)
 
     // 안헷갈리게 this도 명시하고 파라메타도 다른 이름으로 한다
-    CalculationHistory(String n1, String n2, char o, String r, boolean ok, LocalDateTime dt) {
+    Calculation(BigDecimal n1, BigDecimal n2, char o, BigDecimal r, boolean ok, LocalDateTime dt) {
         this.num1 = n1;
         this.num2 = n2;
         this.operator = o;
@@ -27,7 +24,7 @@ class CalculationHistory {
     }
 
     // 어차피 현재시간 넣을거면 그냥 생성자에서 만들게 DateTime 안넣는 버전 생성자
-    CalculationHistory(String n1, String n2, char o, String r, boolean ok) {
+    Calculation(BigDecimal n1, BigDecimal n2, char o, BigDecimal r, boolean ok) {
         this.num1 = n1;
         this.num2 = n2;
         this.operator = o;
@@ -36,7 +33,7 @@ class CalculationHistory {
     }
 
     // 조회 상황에서 복사본을 만들어서 사용하게 하기 위한 생성자
-    CalculationHistory(CalculationHistory other) {
+    Calculation(Calculation other) {
         this.num1 = other.num1;
         this.num2 = other.num2;
         this.operator = other.operator;
@@ -50,7 +47,7 @@ class CalculationHistory {
         this.updatedDt = LocalDateTime.now();
     }
 
-    void setAll(String n1, String n2, char o, String r, boolean ok){
+    void setAll(BigDecimal n1, BigDecimal n2, char o, BigDecimal r, boolean ok){
         this.num1 = n1;
         this.num2 = n2;
         this.operator = o;

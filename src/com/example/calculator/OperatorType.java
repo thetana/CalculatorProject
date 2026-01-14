@@ -1,31 +1,21 @@
 package com.example.calculator;
 
+import java.math.BigDecimal;
 import java.util.function.BiFunction;
-import java.util.function.DoubleBinaryOperator;
 
 public enum OperatorType {
-    PLUS ('+') ,
-    MINUS ('-') ,
-    MULTIPLY ('*') ,
-    DIVIDE ('/');
-//    MINUS ((a,b) -> a - b),
-//    MULTIPLY ((a,b) -> a * b),
-//    DIVIDE ((a,b) -> a / b);
+    PLUS((a, b) -> a.add(b)),
+    MINUS((a, b) -> a.subtract(b)),
+    MULTIPLY((a, b) -> a.multiply(b)),
+    DIVIDE((a, b) -> a.divide(b));
 
-    private BiFunction<Integer,Integer,Integer> operation ;
+    private final BiFunction<BigDecimal, BigDecimal, BigDecimal> operation;
 
-    private char symbol ;
-
-    OperatorType(char symbol) {
-        this.symbol = symbol;
+    OperatorType(BiFunction<BigDecimal, BigDecimal, BigDecimal> operation) {
+        this.operation = operation;
     }
 
-    public static OperatorType from(char c) {
-        for (OperatorType type : values()) {
-            if (type.symbol == c) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("지원하지 않는 문자: " + c);
+    public BigDecimal cal(BigDecimal x, BigDecimal y) {
+        return operation.apply(x, y);
     }
 }
