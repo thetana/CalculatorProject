@@ -10,7 +10,7 @@ public class Calculation {
     private BigDecimal result;
     private boolean isOk;
     private String comment = "";
-    private LocalDateTime createdDt  = LocalDateTime.now();
+    private LocalDateTime createdDt = LocalDateTime.now();
     private LocalDateTime updatedDt; // 지금 안쓰지만 언젠가 쓸 수도 있으니 저장 해둔다 (영구저장이 아니라 미리 해도 의미는 없는데 영구저장을 염두해두고 일단 저장 한다)
 
     // 안헷갈리게 this도 명시하고 파라메타도 다른 이름으로 한다
@@ -42,12 +42,12 @@ public class Calculation {
         this.createdDt = other.createdDt;
     }
 
-    void setComment(String c){
+    void setComment(String c) {
         this.comment = c;
         this.updatedDt = LocalDateTime.now();
     }
 
-    void setAll(BigDecimal n1, BigDecimal n2, char o, BigDecimal r, boolean ok){
+    void setAll(BigDecimal n1, BigDecimal n2, char o, BigDecimal r, boolean ok) {
         this.num1 = n1;
         this.num2 = n2;
         this.operator = o;
@@ -55,14 +55,19 @@ public class Calculation {
         this.isOk = ok;
     }
 
+    double getResult() {
+        return this.result.doubleValue();
+    }
+
+
     // 그냥 익숙하니까 toString 이라고 이름 지었는데 오버라이드 되어서 print에 오브젝트 넣으면 알아서 실행됨
     // print에 그냥 오브젝트 넣으면 toString()이 실행 되는 것도 신기한데 toString을 오버라이드 하는 것도 개신기함
     @Override
     public String toString() {
         if (isOk) {
-            return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = " + result + " | 노트 : " + comment + " | 계산 일시 : " + createdDt;
+            return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = " + result + " | 코멘트 : " + comment + " | 계산 일시 : " + createdDt;
         } else {
-            return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = 계산 실패 | 노트 : " + comment + " | 계산 일시 : " + createdDt;
+            return "계산 결과 : " + num1 + " " + operator + " " + num2 + " = 계산 실패 | 코멘트 : " + comment + " | 계산 일시 : " + createdDt;
         }
     }
 }

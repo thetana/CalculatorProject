@@ -6,7 +6,6 @@ import java.util.function.Function;
 public class ArithmeticCalculator implements Calculateable<BigDecimal, BigDecimal, Boolean> {
     private CalculationRecorder recorder = new CalculationRecorder();
 
-
     @Override
     public Boolean calculate(BigDecimal n1, BigDecimal n2, char o) {
         boolean isOk = false;
@@ -24,7 +23,7 @@ public class ArithmeticCalculator implements Calculateable<BigDecimal, BigDecima
         } catch (IllegalArgumentException e) {// 지원하지 않는 연산자 썼을 때
             isOk = false;
             System.out.println("연산 할 수 없는 기호 입니다.");
-        } catch (ArithmeticException e) {// 우선 0나누기만 추가 향후 몇가지 예외처리 추가
+        } catch (ArithmeticException e) {
             isOk = false;
             System.out.println("0으로 나눌 수 없습니다.");
         } catch (Exception e) {

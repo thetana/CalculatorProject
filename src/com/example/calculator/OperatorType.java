@@ -1,13 +1,14 @@
 package com.example.calculator;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.function.BiFunction;
 
 public enum OperatorType {
     PLUS((a, b) -> a.add(b)),
     MINUS((a, b) -> a.subtract(b)),
     MULTIPLY((a, b) -> a.multiply(b)),
-    DIVIDE((a, b) -> a.divide(b));
+    DIVIDE((a, b) -> a.divide(b, MathContext.DECIMAL32));
 
     private final BiFunction<BigDecimal, BigDecimal, BigDecimal> operation;
 
