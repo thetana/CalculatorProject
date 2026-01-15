@@ -1,4 +1,4 @@
-![UML 클래스 다이어그램](https://github.com/user-attachments/assets/9d91b8e0-f0f2-41d3-ba13-b78ec6a0a36d)
+![UML 클래스 다이어그램 (1)](https://github.com/user-attachments/assets/5ecc84d6-eb14-4aa0-91fa-f33d11ce95fb)
 
 [프로젝트 설명]
 
