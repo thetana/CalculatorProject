@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.function.Function;
 
 public class ArithmeticCalculator implements Calculateable<BigDecimal, BigDecimal, Boolean> {
-    private CalculationRecorder recorder = new CalculationRecorder();
+    private final CalculationRecorder recorder = new CalculationRecorder();
 
     @Override
     public Boolean calculate(BigDecimal n1, BigDecimal n2, char o) {

@@ -6,8 +6,8 @@ import com.example.calculator.CalculationRecorder;
 import java.math.BigDecimal;
 
 public class CalculationPage extends Page {
-    private ArithmeticCalculator calculator = new ArithmeticCalculator();
-    private CalculationRecorder recorder = new CalculationRecorder();
+    private final ArithmeticCalculator calculator = new ArithmeticCalculator();
+    private final CalculationRecorder recorder = new CalculationRecorder();
 
     CalculationPage(){
         name = "계산 하기";

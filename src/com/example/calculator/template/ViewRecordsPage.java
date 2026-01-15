@@ -8,14 +8,16 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ViewRecordsPage extends Page {
-    private Map<String, String> filter = new HashMap();
-    private CalculationRecorder recorder = new CalculationRecorder();
+    // 여러개의 필터를 적용 할 수 있게 하기 위해 필터를 맵으로 저장 했다
+    private final Map<String, String> filter = new HashMap();
+    private final CalculationRecorder recorder = new CalculationRecorder();
 
     public void open() {
         try {
             Map<Integer, Calculation> map = recorder.getAllCalculations();
             if (filter.size() > 0) {
                 for (String k : filter.keySet()) {
+                    // 이 Page에서 사용 가능한 필터링은 이곳에서 로직을 추가한다 if else로 추가하면 중복적용을 못하기 때문에 if로 추가해야 한다
                     if (k.equals("m") || k.equals("M")) {
                         map = map.entrySet().stream() // 스트림 생성
                                 .filter(v -> v.getValue().getResult() >= Double.parseDouble(filter.get(k))) // 유저 입력 값 이상만
@@ -30,6 +32,7 @@ public class ViewRecordsPage extends Page {
         }
     }
 
+    // 필터를 셋팅하는 메소드
     public void setFilter(String f, String v) {
         this.filter.put(f, v);
     }

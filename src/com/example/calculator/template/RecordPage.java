@@ -3,7 +3,7 @@ package com.example.calculator.template;
 import com.example.calculator.CalculationRecorder;
 
 public class RecordPage extends Page {
-    private CalculationRecorder recorder = new CalculationRecorder();
+    private final CalculationRecorder recorder = new CalculationRecorder();
 
     RecordPage(){
         name = "계산 기록";
@@ -16,7 +16,7 @@ public class RecordPage extends Page {
         while (run) {
             view.open();
             System.out.println("공백으로 구분 하여 명령어와 대상 데이터 입력");
-            System.out.println("이력 코멘트 달기 : c [인덱스] [코멘트 내용], 데이터 삭제 : d [인덱스], 0. 메인 메뉴로 이동");
+            System.out.println("이력 코멘트 달기 : c [키] [코멘트 내용], 데이터 삭제 : d [키], 0. 메인 메뉴로 이동");
             String s = sc.next();
             if (s.equals("c") || s.equals("C")) {
                 int key = sc.nextInt();
