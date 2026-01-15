@@ -42,23 +42,26 @@ public class Calculation {
         this.createdDt = other.createdDt;
     }
 
+    // 코멘트만 수정한다
     public void setComment(String c) {
         this.comment = c;
         this.updatedDt = LocalDateTime.now();
     }
 
+    // 필요 할 수 있어서 만들어 놨던거 데이터 한번에 다 수정하기
     public void setAll(BigDecimal n1, BigDecimal n2, char o, BigDecimal r, boolean ok) {
         this.num1 = n1;
         this.num2 = n2;
         this.operator = o;
         this.result = r;
         this.isOk = ok;
+        this.updatedDt = LocalDateTime.now();
     }
 
+    // 계산 결과를 편의상 그냥 double로 했는데 계산에 정확도가 떨어질 수 있지 않나 생각이 들긴 한다
     public double getResult() {
         return this.result.doubleValue();
     }
-
 
     // 그냥 익숙하니까 toString 이라고 이름 지었는데 오버라이드 되어서 print에 오브젝트 넣으면 알아서 실행됨
     // print에 그냥 오브젝트 넣으면 toString()이 실행 되는 것도 신기한데 toString을 오버라이드 하는 것도 개신기함

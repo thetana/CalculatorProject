@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+// 조회만 수행하는 페이지를 View라고 정의한다
+// 여러 곳에서 사용 될 수 있는 조회 데이터를 보통 출력 한다
+
 public class ViewRecordsPage extends Page {
     // 여러개의 필터를 적용 할 수 있게 하기 위해 필터를 맵으로 저장 했다
     private final Map<String, String> filter = new HashMap();

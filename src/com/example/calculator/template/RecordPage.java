@@ -2,6 +2,9 @@ package com.example.calculator.template;
 
 import com.example.calculator.CalculationRecorder;
 
+// 저장된 계산 이련에 대한 기능들을 수행한다
+// 원래 삭제하는 Page 수정하는 Page 따로 만들려고 했으나 여기서 다 처리하는게 유저도 편리하고 만들기도 깔끔하다고 생각 했다
+
 public class RecordPage extends Page {
     private final CalculationRecorder recorder = new CalculationRecorder();
 

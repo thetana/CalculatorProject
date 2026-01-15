@@ -11,7 +11,7 @@ import java.util.Scanner;
 // (이부분도 오버 엔지니어링이라는 생각이 들었다)
 
 public abstract class Page {
-    protected String name;
+    protected String name; // 메뉴 출력에서 사용 할 이름
     protected final Scanner sc = new Scanner(System.in);
     public void open() {
     }
