@@ -1,8 +1,9 @@
-package com.example.calculator;
+package com.example.calculator.template;
 
-import java.math.BigDecimal;
+import com.example.calculator.Calculation;
+import com.example.calculator.CalculationRecorder;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -16,9 +17,9 @@ public class ViewRecordsPage extends Page {
             if (filter.size() > 0) {
                 for (String k : filter.keySet()) {
                     if (k.equals("m") || k.equals("M")) {
-                        map = map.entrySet().stream() // 1. 데이터 준비: 스트림 생성
-                                .filter(v -> v.getValue().getResult() >= Double.parseDouble(filter.get(k)))    // 2. 중간 연산: 짝수만 필터링// 3. 중간 연산: 10배로 변환
-                                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)); // 4. 최종 연산: 리스트로 변환
+                        map = map.entrySet().stream() // 스트림 생성
+                                .filter(v -> v.getValue().getResult() >= Double.parseDouble(filter.get(k))) // 유저 입력 값 이상만
+                                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)); // 맵으로 변환
                     }
                 }
             }

@@ -42,12 +42,12 @@ public class Calculation {
         this.createdDt = other.createdDt;
     }
 
-    void setComment(String c) {
+    public void setComment(String c) {
         this.comment = c;
         this.updatedDt = LocalDateTime.now();
     }
 
-    void setAll(BigDecimal n1, BigDecimal n2, char o, BigDecimal r, boolean ok) {
+    public void setAll(BigDecimal n1, BigDecimal n2, char o, BigDecimal r, boolean ok) {
         this.num1 = n1;
         this.num2 = n2;
         this.operator = o;
@@ -55,7 +55,7 @@ public class Calculation {
         this.isOk = ok;
     }
 
-    double getResult() {
+    public double getResult() {
         return this.result.doubleValue();
     }
 

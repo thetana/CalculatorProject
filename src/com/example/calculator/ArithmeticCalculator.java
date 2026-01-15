@@ -34,25 +34,9 @@ public class ArithmeticCalculator implements Calculateable<BigDecimal, BigDecima
         return isOk;
     }
 
-
-    // 제네릭 한 값을 받아와서 적절한 형으로 변형하여 계산하고 더블로 반환한다
-//    public double plus(T n1, T n2) {
-//        double result = 0.0;
-//        // 입력 값이 int가 적합한지 long이 적합한지 판단하기는 하지만 사실 결과 값에서
-//        if (canParse(n1.toString(), Integer::parseInt) && canParse(n2.toString(), Integer::parseInt)) {
-//            result = Integer.parseInt(n1.toString()) + Integer.parseInt(n2.toString());
-//        } else if (canParse(n1.toString(), Long::parseLong) && canParse(n2.toString(), Long::parseLong)) {
-//            result = Long.parseLong(n1.toString()) + Long.parseLong(n2.toString());
-//        } else if (canParse(n1.toString(), Double::parseDouble) && canParse(n2.toString(), Double::parseDouble)) {
-//            result = Double.parseDouble(n1.toString()) + Double.parseDouble(n2.toString());
-//        } else {
-//            throw new IllegalArgumentException();
-//        }
-//        return result;
-//    }
-
-
     // 형변환 가능한지 검증하는 코드인데 이것도 그냥 제네릭 하게 해보자
+    // 이전에 아무 숫자나 들어오면 최적의 형으로 변환하여 계산하는 로직을 만들었는데 그때 사용하던 메소드 이다
+    // 지금은 안쓰긴 하는데 또 쓸만도 하니 그냥 그대로 두었다
     private <T> boolean canParse(String input, Function<String, T> parser) {
         try {
             parser.apply(input);

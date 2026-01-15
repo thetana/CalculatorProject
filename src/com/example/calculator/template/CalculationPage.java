@@ -1,11 +1,17 @@
-package com.example.calculator;
+package com.example.calculator.template;
+
+import com.example.calculator.ArithmeticCalculator;
+import com.example.calculator.CalculationRecorder;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class CalculationPage extends Page {
     private ArithmeticCalculator calculator = new ArithmeticCalculator();
     private CalculationRecorder recorder = new CalculationRecorder();
+
+    CalculationPage(){
+        name = "계산 하기";
+    }
 
     @Override
     public void open() {
@@ -16,6 +22,7 @@ public class CalculationPage extends Page {
                 System.out.println("예) 1 + 1");
                 String s = sc.next();
                 if (s.equals("exit") || s.equals("q")) {
+                    run = false;
                     break;
                 } else {
                     BigDecimal n1 = new BigDecimal(s);

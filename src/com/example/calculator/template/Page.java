@@ -1,4 +1,4 @@
-package com.example.calculator;
+package com.example.calculator.template;
 
 import java.util.Scanner;
 
@@ -11,9 +11,8 @@ import java.util.Scanner;
 // (이부분도 오버 엔지니어링이라는 생각이 들었다)
 
 public abstract class Page {
+    String name;
     Scanner sc = new Scanner(System.in);
     public void open() {
-
-
     }
 }
